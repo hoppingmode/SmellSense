@@ -1,0 +1,18 @@
+import 'package:smellsense/app/static/supported_training_scent.dart';
+
+class SupportedTrainingScentDataLoader {
+  List<SupportedTrainingScent>? scents;
+
+  SupportedTrainingScentDataLoader({this.scents});
+
+  factory SupportedTrainingScentDataLoader.fromJson(
+    List<Map<String, String>> json,
+  ) =>
+      SupportedTrainingScentDataLoader(
+        scents: json.map(SupportedTrainingScent.fromJson).toList(),
+      );
+
+  static SupportedTrainingScentDataLoader loadSupportedTrainingScents() {
+    return SupportedTrainingScentDataLoader.fromJson(supportedScentsData);
+  }
+}

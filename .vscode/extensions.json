@@ -1,0 +1,27 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "Dart-Code.flutter",
+    "usernamehw.errorlens",
+    "felipecaputo.git-project-manager",
+    "eamodio.gitlens",
+    "richie5um2.vscode-sort-json",
+    "meganrogge.template-string-converter",
+    "markosth09.color-picker",
+    "redhat.vscode-yaml",
+    "mads-hartmann.bash-ide-vscode",
+    "shakram02.bash-beautify",
+    "timonwong.shellcheck",
+    "foxundermoon.shell-format",
+    "simonsiefke.svg-preview",
+    "gmlewis-vscode.flutter-stylizer",
+    "netcorext.uuid-generator",
+    "tomoki1207.pdf",
+    "alexisvt.flutter-snippets",
+    "antoinegtr.flutter-icons",
+    "github.copilot",
+    "github.copilot-chat",
+    "circlecodesolution.ccs-flutter-color",
+    "yy0931.vscode-sqlite3-editor"
+  ]
+}

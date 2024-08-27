@@ -1,0 +1,54 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "debug: wi-fi device",
+      "type": "dart",
+      "request": "launch",
+      "presentation": {
+        "hidden": false,
+        "group": "debug",
+        "order": 1
+      },
+      "program": "lib/main.dart",
+      "deviceId": "SM A245F",
+      "flutterMode": "debug",
+      "internalConsoleOptions": "openOnSessionStart",
+      "preLaunchTask": "adb: sync db from device"
+    },
+    {
+      "name": "debug: virtual device",
+      "type": "dart",
+      "request": "attach",
+      "presentation": {
+        "hidden": false,
+        "group": "debug",
+        "order": 2
+      },
+      "deviceId": "emulator-5554",
+      "preLaunchTask": "adb: launch virtual device"
+    },
+    {
+      "name": "debug release: wi-fi device",
+      "type": "dart",
+      "request": "launch",
+      "presentation": {
+        "hidden": false,
+        "group": "debug",
+        "order": 3
+      },
+      "program": "lib/main.dart",
+      "deviceId": "SM A245F",
+      "flutterMode": "release",
+      "showMemoryUsage": true,
+      "internalConsoleOptions": "openOnSessionStart"
+    },
+    {
+      "name": "flutter: run tests",
+      "type": "dart",
+      "request": "launch",
+      "program": "${workspaceFolder}/test",
+      "args": ["--coverage", "--reporter=expanded"]
+    }
+  ]
+}
