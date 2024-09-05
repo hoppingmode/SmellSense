@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smellsense/app/shared/modules/training_scent/training_scent.module.dart';
 import 'package:smellsense/app/shared/modules/training_scent/training_scent_display.module.dart';
+import 'package:smellsense/app/shared/widgets/vertical_ellipses.widget.dart';
 
 class ScentSelectionCheckboxGroupWidget extends StatefulWidget {
   static const maxSelectionCount = 4;
@@ -20,9 +21,9 @@ class ScentSelectionCheckboxGroupWidget extends StatefulWidget {
 class ScentSelectionCheckboxGroupWidgetState
     extends State<ScentSelectionCheckboxGroupWidget> {
   final ScrollController _scrollController = ScrollController();
-  bool _isAtBottom = true;
 
   late final Map<TrainingScentName, bool> selectedScents;
+  bool _scrollEnded = true;
 
   @override
   void initState() {
@@ -37,11 +38,11 @@ class ScentSelectionCheckboxGroupWidgetState
   void _scrollListener() {
     if (_scrollController.position.atEdge) {
       setState(() {
-        _isAtBottom = _scrollController.position.pixels != 0;
+        _scrollEnded = _scrollController.position.pixels != 0;
       });
     } else {
       setState(() {
-        _isAtBottom = false;
+        _scrollEnded = false;
       });
     }
   }
@@ -129,18 +130,14 @@ class ScentSelectionCheckboxGroupWidgetState
               ),
           ],
         ),
-        if (!_isAtBottom)
-          Positioned(
+        if (!_scrollEnded)
+          const Positioned(
             bottom: 0,
             left: 0,
             right: 0,
-            child: Container(
-              alignment: Alignment.center,
-              padding: const EdgeInsets.all(8.0),
-              child: const Text(
-                '...',
-                style: TextStyle(fontSize: 24, color: Colors.grey),
-              ),
+            child: Padding(
+              padding: EdgeInsets.only(bottom: 8),
+              child: VerticalEllipses(),
             ),
           ),
       ],

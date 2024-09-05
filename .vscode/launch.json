@@ -13,8 +13,7 @@
       "program": "lib/main.dart",
       "deviceId": "SM A245F",
       "flutterMode": "debug",
-      "internalConsoleOptions": "openOnSessionStart",
-      "preLaunchTask": "adb: sync db from device"
+      "internalConsoleOptions": "openOnSessionStart"
     },
     {
       "name": "debug: virtual device",
@@ -29,7 +28,7 @@
       "preLaunchTask": "adb: launch virtual device"
     },
     {
-      "name": "debug release: wi-fi device",
+      "name": "debug: wi-fi device (release)",
       "type": "dart",
       "request": "launch",
       "presentation": {
