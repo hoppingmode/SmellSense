@@ -28,14 +28,6 @@
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true
   },
-  "dart.flutterCustomEmulators": [
-    {
-      "args": ["-avd", "Pixel_6_API_34", "-gpu", "host", "-grpc-use-jwt"],
-      "emulatorPath": "emulator",
-      "id": "Pixel_6_API_34",
-      "name": "Pixel 6 API 34"
-    }
-  ],
   "editor.codeActionsOnSave": {
     "source.fixAll.dart": "always",
     "source.organizeImports": "always"

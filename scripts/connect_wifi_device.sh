@@ -2,7 +2,6 @@
 
 ##
 # Connects an Android device to the host machine over Wi-Fi.
-# The script should be executed from an external script or terminal.
 ##
 
 function usage() {
@@ -60,48 +59,18 @@ function connect_wireless_device() {
     return 0
 }
 
-while getopts "d:" opt; do
-    case "${opt}" in
-    d)
-        if [ -z "$OPTARG" ]; then
-            usage
-            exit 1
-        fi
+if adb forward --list | grep -q "tcp:"; then
+    echo -e "\n[connect_device] Device already connected."
+    return
+fi
 
-        case "$OPTARG" in
-        "wifi")
-            if adb forward --list | grep -q "tcp:"; then
-                echo -e "\n[connect_device] Device already connected."
-                return
-            fi
+if ! connect_wireless_device; then
+    echo -e "\n[connect_device] Failed."
+    exit 1
+fi
 
-            if ! connect_wireless_device; then
-                echo -e "\n[connect_device] Failed."
-                exit 1
-            fi
+echo -e "\n[connect_device] Success."
 
-            echo -e "\n[connect_device] Success."
+read -r -p "[connect_device] Press any key to exit..."
 
-            read -r -p "[connect_device] Press any key to exit..."
-
-            exit 0
-            ;;
-        "vm")
-            echo "[connect_device] Connecting to virtual device..."
-            exit 0
-            ;;
-        *)
-            echo "[connect_device] Invalid option: $OPTARG"
-            usage
-            exit 1
-            ;;
-        esac
-        ;;
-    \?)
-        usage
-        ;;
-    *)
-        usage
-        ;;
-    esac
-done
+exit 0

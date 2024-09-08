@@ -8,7 +8,9 @@ import 'package:smellsense/app/shared/modules/training_scent/training_scent.modu
     show TrainingScent;
 
 class HomeScreenWidget extends StatefulWidget {
-  const HomeScreenWidget({super.key});
+  const HomeScreenWidget({
+    super.key,
+  });
 
   @override
   HomeScreenWidgetState createState() => HomeScreenWidgetState();

@@ -30,8 +30,8 @@ class App extends StatelessWidget {
               builder: (context, child) {
                 return MultiProvider(
                   providers: [
-                    Provider<Infrastructure?>.value(
-                      value: context.watch<Infrastructure?>(),
+                    Provider<Infrastructure>.value(
+                      value: context.watch<Infrastructure>(),
                     ),
                   ],
                   child: child,
