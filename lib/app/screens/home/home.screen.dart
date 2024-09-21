@@ -1,11 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart' show SvgPicture;
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:smellsense/app/application/providers/asset.provider.dart';
 import 'package:smellsense/app/application/providers/infrastructure.provider.dart';
-import 'package:smellsense/app/shared/modules/training_scent/training_scent.module.dart'
-    show TrainingScent;
+import 'package:smellsense/app/shared/modules/training_scent/training_scent.module.dart';
 
 class HomeScreenWidget extends StatefulWidget {
   const HomeScreenWidget({
@@ -19,8 +18,6 @@ class HomeScreenWidget extends StatefulWidget {
 class HomeScreenWidgetState extends State<HomeScreenWidget> {
   final List<TrainingScent> scents = [];
   late final Infrastructure infrastructure;
-
-  get assetBundle => AssetProvider();
 
   @override
   void initState() {
@@ -39,6 +36,7 @@ class HomeScreenWidgetState extends State<HomeScreenWidget> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
+              // TODO: Convert SVG image to another image format
               "assets/svg/smellsense_logo.svg",
               width: 50,
             ),
@@ -51,11 +49,14 @@ class HomeScreenWidgetState extends State<HomeScreenWidget> {
               style: Theme.of(context).textTheme.titleSmall,
             ),
             FloatingActionButton(
-              onPressed: () => context.goNamed('training'),
+              onPressed: () => context.go('/training'),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(5),
               ),
-              child: Text('Start Training', style: textTheme.labelMedium),
+              child: Text(
+                'screen.home.menu.train_menu_button'.tr(),
+                style: textTheme.labelMedium,
+              ),
             ),
             FloatingActionButton(
                 onPressed: () => context.go('/training-progress'),
@@ -63,25 +64,25 @@ class HomeScreenWidgetState extends State<HomeScreenWidget> {
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: Text(
-                  "View Training Progress",
+                  'screen.home.menu.training_history_menu_button'.tr(),
                   style: textTheme.labelMedium,
                 )),
             FloatingActionButton(
-                onPressed: () => context.goNamed('about'),
+                onPressed: () => context.go('/about'),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: Text(
-                  "About",
+                  "screen.home.menu.about_menu_button".tr(),
                   style: textTheme.labelMedium,
                 )),
             FloatingActionButton(
-                onPressed: () => context.goNamed('help'),
+                onPressed: () => context.go('/help'),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: Text(
-                  "Help",
+                  "screen.home.menu.help_menu_button".tr(),
                   style: textTheme.labelMedium,
                 )),
           ],

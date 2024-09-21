@@ -8,11 +8,8 @@ class DateUtils {
     return DateTime(date.year, date.month, date.day);
   }
 
-  static DateTime fromDateTime(DateTime date) {
-    return DateTime(date.year, date.month, date.day);
-  }
+  static DateTime fromDateTime(DateTime date) =>
+      DateTime(date.year, date.month, date.day);
 
-  static String formatDate(DateTime date) {
-    return dateFormatter.format(date);
-  }
+  static String formatDate(DateTime date) => dateFormatter.format(date);
 }

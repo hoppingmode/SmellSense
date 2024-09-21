@@ -60,8 +60,8 @@ function connect_wireless_device() {
 }
 
 if adb forward --list | grep -q "tcp:"; then
-    echo -e "\n[connect_device] Device already connected."
-    return
+    echo "[connect_device] Device already connected."
+    exit 0
 fi
 
 if ! connect_wireless_device; then

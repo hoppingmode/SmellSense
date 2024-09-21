@@ -28,8 +28,27 @@
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true
   },
+  "dart.analysisExcludedFolders": [
+    ".dart_tool/",
+    ".git",
+    ".husky/",
+    ".idea/",
+    "build/",
+    "android/",
+    "ios/",
+    "tools/",
+    "scripts/"
+  ],
+  "dart.analysisServerFolding": false,
+  "dart.cliConsole": "debugConsole",
+  "dart.debugSdkLibraries": false,
+  "dart.flutterOutline": true,
+  "dart.flutterTestLogFile": "test_results.xml",
+  "dart.runPubGetOnPubspecChanges": "prompt",
+  "dart.showTestCodeLens": true,
+  "dart.vmServiceLogFile": "dart-tools.log",
   "editor.codeActionsOnSave": {
-    "source.fixAll.dart": "always",
+    "source.fixAll.dart": "explicit",
     "source.organizeImports": "always"
   },
   "editor.formatOnPaste": true,

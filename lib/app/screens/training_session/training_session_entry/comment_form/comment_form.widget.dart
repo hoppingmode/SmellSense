@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:smellsense/app/shared/modules/training_session/training_session_entry.module.dart';
-import 'package:smellsense/app/shared/modules/training_session/training_session_entry_parosmia_reaction.module.dart';
+import 'package:smellsense/app/shared/modules/training_session/training_session_entry_altered_reaction.module.dart';
 import 'package:smellsense/app/shared/utils.dart';
 
-class CommentForm extends StatefulWidget {
+class CommentsFormWidget extends StatefulWidget {
   final FormMode mode;
   final TrainingSessionEntry entry;
 
-  const CommentForm({super.key, required this.mode, required this.entry});
+  const CommentsFormWidget({
+    super.key,
+    required this.mode,
+    required this.entry,
+  });
 
   @override
-  State<CommentForm> createState() => _CommentFormState();
+  State<CommentsFormWidget> createState() => _CommentsFormWidgetState();
 }
 
-class _CommentFormState extends State<CommentForm> {
+class _CommentsFormWidgetState extends State<CommentsFormWidget> {
   Widget get parosmiaReactionFormField => FormField(
         builder: (FormFieldState<dynamic> field) => DropdownButtonFormField(
           items: [

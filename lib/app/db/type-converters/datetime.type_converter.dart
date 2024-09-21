@@ -16,7 +16,6 @@ class DateTimeTypeConverter extends TypeConverter<DateTime, int> {
     return dateMillis;
   }
 
-  DateTime stripTime(DateTime dateTime) {
-    return DateTime(dateTime.year, dateTime.month, dateTime.day);
-  }
+  DateTime stripTime(DateTime dateTime) =>
+      DateTime(dateTime.year, dateTime.month, dateTime.day);
 }

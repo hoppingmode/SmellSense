@@ -41,7 +41,6 @@ class TrainingSessionEncouragements {
     "What positive associations can you make with this smell?",
   ];
 
-  static String getNextEncouragement() {
-    return _encouragements[++currentIndex % _encouragements.length];
-  }
+  static String getNextEncouragement() =>
+      _encouragements[++currentIndex % _encouragements.length];
 }

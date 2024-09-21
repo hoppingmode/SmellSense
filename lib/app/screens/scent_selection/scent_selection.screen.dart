@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:smellsense/app/application/providers/infrastructure.provider.dart';
@@ -48,6 +49,25 @@ class ScentSelectionScreenWidgetState
     }
   }
 
+  void Function()? get onNextButtonPressed => isSelectionComplete()
+      ? () async {
+          isSubmitting.value = true;
+          try {
+            await storeScentSelections();
+            if (context.mounted) {
+              setState(() {
+                isSubmitting.value = false;
+                context.go('/');
+              });
+            }
+          } catch (e) {
+            Log.error('Error storing scent selections: $e');
+          } finally {
+            isSubmitting.value = false;
+          }
+        }
+      : null;
+
   @override
   Widget build(BuildContext context) {
     var theme = MaterialTheme.of(context);
@@ -55,77 +75,41 @@ class ScentSelectionScreenWidgetState
 
     return Scaffold(
       body: Center(
-        widthFactor: MediaQuery.of(context).size.width,
-        child: ValueListenableBuilder(
-          valueListenable: isSubmitting,
-          builder: (context, bool isSubmitting, child) {
-            return Stack(
-              children: [
-                if (isSubmitting)
-                  Container(
-                    color: theme.colorScheme.surface.withOpacity(0.5),
-                    child: const Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  ),
-                child!,
-              ],
-            );
-          },
-          child: SizedBox(
-            width: MediaQuery.of(context).size.width * 0.8,
-            height: MediaQuery.of(context).size.height * 0.8,
-            child: Flex(
-              direction: Axis.vertical,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Flexible(
-                  flex: 1,
-                  child: Text(
-                    'Select four of your desired training scents',
-                    style: textTheme.headlineMedium,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                Flexible(
-                  flex: 3,
-                  child: ScentSelectionCheckboxGroupWidget(
-                    onSelectionChange: (List<TrainingScentName> scents) {
-                      setState(
-                        () {
-                          selectedScents = scents;
-                        },
-                      );
-                    },
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: OutlinedButton(
-                    onPressed: isSelectionComplete()
-                        ? () async {
-                            isSubmitting.value = true;
-                            try {
-                              await storeScentSelections();
-                              if (context.mounted) {
-                                context.goNamed(
-                                  'home',
-                                );
-                              }
-                            } catch (e) {
-                              Log.error('Error storing scent selections: $e');
-                            } finally {
-                              isSubmitting.value = false;
-                            }
-                          }
-                        : null,
-                    child: const Text('NEXT'),
-                  ),
-                )
-              ],
+        child: Flex(
+          direction: Axis.vertical,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Flexible(
+              flex: 1,
+              child: Text(
+                'screen.scent_selection.select_scents_headline'.tr(),
+                style: textTheme.headlineMedium,
+                textAlign: TextAlign.center,
+              ),
             ),
-          ),
+            Flexible(
+              flex: 3,
+              child: ScentSelectionCheckboxGroupWidget(
+                onSelectionChange: (List<TrainingScentName> scents) {
+                  setState(
+                    () {
+                      selectedScents = scents;
+                    },
+                  );
+                },
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: OutlinedButton(
+                onPressed: onNextButtonPressed,
+                child: Text(
+                  'shared.next_button_label'.tr(),
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );
