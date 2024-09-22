@@ -15,6 +15,16 @@ echo "Setting up project..."
     exit 1
 }
 
+echo "Configuring adb..."
+{
+    adb kill-server
+    adb start-server
+} ||
+    {
+        echo "An error occurred while configuring adb."
+        exit 1
+    }
+
 echo -e "\nSetup complete."
 
 exit 0

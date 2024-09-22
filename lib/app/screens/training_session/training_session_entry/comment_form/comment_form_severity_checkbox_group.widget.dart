@@ -14,7 +14,7 @@ class CommentsFormSeverityCheckboxGroupWidget
                   field) =>
               RatingBar.builder(
             itemBuilder: (context, rating) {
-              return Icon(
+              return const Icon(
                 Icons.star,
                 color: Colors.amber,
               );

@@ -67,7 +67,7 @@ class TrainingSessionEntryService {
     }
   }
 
-  Future<void> addTrainingSessionEntry(
+  Future<void> recordTrainingSessionEntry(
     String sessionId,
     TrainingSessionEntry entry,
   ) async {

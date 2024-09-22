@@ -19,8 +19,8 @@
       "name": "debug: virtual device",
       "type": "dart",
       "request": "attach",
-      "deviceId": "emulator-5554",
       "program": "lib/main.dart",
+      "deviceId": "emulator-5554",
       "presentation": {
         "group": "debug",
         "order": 2

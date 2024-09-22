@@ -1,6 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:smellsense/app/shared/modules/training_scent/training_scent.module.dart';
-import 'package:smellsense/app/shared/utils.dart';
 
 class TrainingScentDisplay {
   final TrainingScentName name;
@@ -17,11 +17,6 @@ class TrainingScentDisplay {
 
   @override
   String toString() {
-    return formatString(this, [
-      'name',
-      'displayName',
-      'displayColor',
-      'displayImage',
-    ]);
+    return "TrainingScentDisplay(name: $name, displayName: ${tr(displayName)}, displayColor: $displayColor, displayImage: $displayImage)";
   }
 }

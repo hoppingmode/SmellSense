@@ -1,15 +1,15 @@
 import 'package:intl/intl.dart' show DateFormat;
 
-class DateUtils {
+class DateTimeUtils {
   static final dateFormatter = DateFormat("yMMMEd");
 
-  static DateTime getDate() {
+  static DateTime date() {
     final date = DateTime.now();
     return DateTime(date.year, date.month, date.day);
   }
 
-  static DateTime fromDateTime(DateTime date) =>
+  static DateTime getDateOnly(DateTime date) =>
       DateTime(date.year, date.month, date.day);
 
-  static String formatDate(DateTime date) => dateFormatter.format(date);
+  static String toDateString(DateTime date) => dateFormatter.format(date);
 }

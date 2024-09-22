@@ -41,7 +41,7 @@ class ScentSelectionCheckboxGroupWidgetState
     selectedScents =
         TrainingScentName.values.fold<Map<TrainingScentName, bool>>(
       {},
-      (acc, element) => acc..[element] = false,
+      (acc, scentName) => acc..[scentName] = false,
     );
   }
 
@@ -94,7 +94,7 @@ class ScentSelectionCheckboxGroupWidgetState
                     () {
                       var isChecked = value ?? false;
                       var scentSelections = selectedScents.keys
-                          .where((key) => selectedScents[key] == true)
+                          .where((key) => selectedScents[key]!)
                           .toList();
                       TrainingScentName scentName =
                           TrainingScentName.fromString(scent.name);
@@ -119,7 +119,7 @@ class ScentSelectionCheckboxGroupWidgetState
                           SnackBar(
                             duration: const Duration(seconds: 2),
                             content: Text(
-                              'screen.scent_selection.scent_selection_checkbox_group.selection_limit_reached_snackbar_message'
+                              'screens.scent_selection.scent_selection_checkbox_group.selection_limit_reached_snackbar_message'
                                   .tr(
                                 args: [
                                   ScentSelectionCheckboxGroupWidget

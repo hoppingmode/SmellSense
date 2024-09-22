@@ -25,9 +25,10 @@ class TrainingSessionEntry {
 
     return other is TrainingSessionEntry &&
         other.scent == scent &&
-        other.rating == rating &&
-        other.parosmiaReactionSeverity == parosmiaReactionSeverity &&
-        other.parosmiaReaction == parosmiaReaction &&
+        other.rating.value == rating.value &&
+        other.parosmiaReactionSeverity.severity ==
+            parosmiaReactionSeverity.severity &&
+        other.parosmiaReaction.reaction == parosmiaReaction.reaction &&
         other.comment == comment;
   }
 

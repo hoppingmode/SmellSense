@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:smellsense/app/application/providers/infrastructure.provider.dart';
 import 'package:smellsense/app/screens/scent_selection/scent_selection_checkbox_group.widget.dart';
+import 'package:smellsense/app/shared/dateutils.dart';
 import 'package:smellsense/app/shared/logger.dart';
 import 'package:smellsense/app/shared/modules/training_scent/training_scent.module.dart';
 import 'package:smellsense/app/shared/theme/theme.dart';
@@ -32,7 +33,7 @@ class ScentSelectionScreenWidgetState
 
     try {
       await infrastructure.databaseService.createTrainingPeriod(
-        DateTime.now(),
+        DateTimeUtils.date(),
         selectedScents
             .map(
               (scent) => TrainingScent(
@@ -83,7 +84,7 @@ class ScentSelectionScreenWidgetState
             Flexible(
               flex: 1,
               child: Text(
-                'screen.scent_selection.select_scents_headline'.tr(),
+                'screens.scent_selection.select_scents_headline'.tr(),
                 style: textTheme.headlineMedium,
                 textAlign: TextAlign.center,
               ),

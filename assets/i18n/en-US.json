@@ -1,21 +1,28 @@
 {
+  "assets": {
+    "data": {
+      "supported_scents": {
+        "display_name": {
+          "chamomile": "Chamomile",
+          "cinnamon": "Cinnamon",
+          "citronella": "Citronella",
+          "clove": "Clove",
+          "eucalyptus": "Eucalyptus",
+          "garlic": "Garlic",
+          "grapefruit": "Grapefruit",
+          "lavender": "Lavender",
+          "lemon": "Lemon",
+          "mint": "Mint",
+          "orange": "Orange",
+          "rose": "Rose",
+          "rosemary": "Rosemary",
+          "teatree": "Tea Tree"
+        }
+      }
+    }
+  },
   "shared": {
-    "scent_display_name": {
-      "chamomile": "Chamomile",
-      "cinnamon": "Cinnamon",
-      "citronella": "Citronella",
-      "clove": "Clove",
-      "eucalyptus": "Eucalyptus",
-      "garlic": "Garlic",
-      "grapefruit": "Grapefruit",
-      "lavender": "Lavender",
-      "lemon": "Lemon",
-      "mint": "Mint",
-      "orange": "Orange",
-      "rose": "Rose",
-      "rosemary": "Rosemary",
-      "tea-tree": "Tea Tree"
-    },
+    "scent_display_name": {},
     "next_button_label": "Next"
   },
   "screens": {

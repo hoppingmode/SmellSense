@@ -1,7 +1,4 @@
-import 'dart:convert';
-import 'dart:io';
-import 'dart:typed_data';
-
+import 'package:flutter/foundation.dart';
 import 'package:logger/logger.dart' as dart_logger;
 import 'package:smellsense/app/shared/string_builder.dart';
 
@@ -20,6 +17,33 @@ class AppLogPrinter extends dart_logger.PrettyPrinter {
   });
 
   @override
+  List<String> log(dart_logger.LogEvent event) {
+    if (kDebugMode) {
+      switch (event.level) {
+        case dart_logger.Level.debug:
+          return super.log(event);
+        case dart_logger.Level.error:
+          return super.log(event).map((line) => '🔥 $line').toList();
+        case dart_logger.Level.fatal:
+          return super.log(event).map((line) => '💥 $line').toList();
+        case dart_logger.Level.info:
+        case dart_logger.Level.trace:
+          return super.log(event).map((line) => '🔵 $line').toList();
+        case dart_logger.Level.warning:
+          return super.log(event).map((line) => '⚠️ $line').toList();
+        default:
+          return super.log(event);
+      }
+    }
+
+    if (!kDebugMode && event.level == dart_logger.Level.debug) {
+      return [];
+    }
+
+    return super.log(event);
+  }
+
+  @override
   String stringifyMessage(dynamic message) => stringifyClassObject(message);
 
   String stringifyClassObject(dynamic object) => object.toString();
@@ -28,18 +52,7 @@ class AppLogPrinter extends dart_logger.PrettyPrinter {
 class Log {
   static var logger = dart_logger.Logger(
     printer: AppLogPrinter(),
-    output: dart_logger.MultiOutput(
-      [
-        dart_logger.ConsoleOutput(),
-        dart_logger.FileOutput(
-          file: File.fromRawPath(
-            Uint8List.fromList('log.txt'.codeUnits),
-          ),
-          encoding: const Utf8Codec(),
-          overrideExisting: false,
-        ),
-      ],
-    ),
+    output: dart_logger.ConsoleOutput(),
   );
 
   static trace(dynamic message) {
